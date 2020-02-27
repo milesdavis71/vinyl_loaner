@@ -13,7 +13,6 @@ if($link === false){
 if(isset($_REQUEST["term"])){
     // Prepare a select statement
     $sql = "select * from album";
-    $sql .= "SELECT * from eloado";
 
 
 if ($con -> multi_query($sql))
@@ -32,7 +31,7 @@ if ($con -> multi_query($sql))
             if(mysqli_num_rows($result) > 0){
                 // Fetch result rows as an associative array
                 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                    echo "<p>" . $row["eloadonev"]." ".$row["albumcim"] . "</p>";
+                    echo "<p>" .$row["title_of_album"] . "</p>";
 
 
                 }
