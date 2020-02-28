@@ -149,6 +149,36 @@ echo printMenu();
 
             ?>
             </form>
+
+            <!-- Checkboxes -->
+            <div class="polls">
+                <p class="polls-question">
+                    <span class="polls-question-label">Q:</span>
+                    Choose Javascript frameworks that you use?
+                </p>
+                <div class="polls-options">
+                    <div>
+                        <input id="checkbox1" type="checkbox">
+                        <label for="checkbox1">Angular.js</label>
+                    </div>
+                    <div>
+                        <input id="checkbox2" type="checkbox">
+                        <label for="checkbox2">React.js</label>
+                    </div>
+                    <div>
+                        <input id="checkbox3" type="checkbox">
+                        <label for="checkbox3">Vue.js</label>
+                    </div>
+                    <div>
+                        <input id="checkbox4" type="checkbox">
+                        <label for="checkbox4">Knockout.js</label>
+                    </div>
+                </div>
+                <div class="polls-submit">
+                    <input type="submit" class="button" value="Submit Vote">
+                </div>
+            </div>
+<!--            Checkbox vége-->
         </div>
 
         <div class="cell medium-9 medium-cell-block-y">
