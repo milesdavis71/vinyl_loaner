@@ -19,7 +19,7 @@ printHTML('html/slider.html');
 
         //$sql = "select * from album inner join performer on perform.id = performerid inner join music_genre on genr.id = genre.id";
 
-        $sql = "select * from album inner join performer on perform_id = performer_id";
+        $sql = "select * from album inner join performer on perform_id = performer_id order by album.id desc limit 12";
 
 
         $result = $con -> query($sql);
@@ -36,6 +36,7 @@ printHTML('html/slider.html');
                   <img src=\"{$row['path']}{$row['filename']}\">
                   <div class=\"card-section\">
                         <p class='text-center'>{$row['performer']}<br>
+                        <span> </span>
                         {$row['title_of_record']}</p>
                     
                     </div> <!-- /.card-reveal -->

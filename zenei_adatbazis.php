@@ -13,7 +13,6 @@ printHTML('html/header.html');
 echo printMenu();
 
 ?>
-
 <!--Szörcs css-->
 <style type="text/css">
     body{
@@ -53,6 +52,9 @@ echo printMenu();
         background: #f2f2f2;
     }
 </style>
+<!--Szörcs css vége-->
+
+<!--Szörcs script-->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -77,16 +79,19 @@ echo printMenu();
         });
     });
 </script>
+<!--Szörcs script vége-->
+
 
 <div class="cell medium-auto medium-cell-block-container">
     <div class="grid-x grid-padding-x">
         <div class="cell medium-3 medium-cell-block-y">
+
+<!--Szörcs html eleje-->
             <div class="search-box">
                 <input type="text" autocomplete="off" placeholder="Search country..." />
                 <div class="result"></div>
             </div>
-
-
+<!--Szörcs html vége-->
 
             <form name="FormName" action="#"">
 
@@ -106,11 +111,11 @@ echo printMenu();
                 // kiolvasott értékekkel.
                 while ($row = $result -> fetch_array()){
 //                            echo '<option value="'.$row[0].'">'.$row[1].'</option>';
-                    $mufaj = $_GET['style'];
-                    if(!($mufaj == $row[0])){
+                    $music_genre = $_GET['style'];
+                    if(!($music_genre == $row[0])){
                         echo '<option value="'.$row[0].'">'.$row[1].'</option>';
                     }
-                    if($mufaj == $row[0]){
+                    if($music_genre == $row[0]){
                         echo '<option value="'.$row[0].'" selected>'.$row[1].'</option>';
 
                     }
@@ -119,35 +124,27 @@ echo printMenu();
                 ?>
             </select>
 
-            <button type="submit" class="btn btn-primary">Szűrés</button>
+            <button type="submit" class="button">Szűrés</button>
             <?php
             $sql = "SELECT * FROM album";
             $result = $con -> query($sql);
             $all= $result->num_rows;
 
             if (isset($_GET['style'])) {
-                $sql .= " WHERE mufajid=".$_GET['style'];
+                $sql .= " WHERE genre_id=".$_GET['style'];
             }
-
-
-
-
-
 
             $con ->query($sql);
             $result = $con -> query($sql);
             if (!$result){
                 die("Eredménytelen a lekérdezés!");
             }
-            else if($mufaj==0){
-                echo $all." album felel meg a keresésnek";
-
-
+            else if($music_genre==0){
+                echo '<p>'.$all.' album felel meg a keresésnek</p>';
             }
 
             else if (!($_GET['style']==0)){
-                echo $result->num_rows." album felel meg a keresésnek";
-
+                echo '<p>'.$result->num_rows.' album felel meg a keresésnek';
             }
 
             ?>
@@ -164,9 +161,11 @@ echo printMenu();
     <div class="grid-container">
         <div class="grid-x grid-margin-x grid-margin-y">
         <?php
-        $sql = "select * from album inner join performer on perform_id = performer_id inner join music_genre on genr_id = genre_id";
+        $sql = "select * from album inner join performer on perform_id = performer_id inner join music_genre on genr_id = genre_id inner join grading on grd_id = grade_id";
+
         if (isset($_GET['style'])) {
             $sql .= $_GET['style'] != 0 ? " WHERE genre_id=".$_GET['style'] : "";
+            $sql .= " ORDER BY performer";
         }
 
 
@@ -198,6 +197,9 @@ echo printMenu();
             }
             echo "    <p>A lemez kiadásának éve: {$row['release_date']}</p>
                       <p>Az album műfaja: {$row['genre']}</p>
+                      <p>Lemezminőség: {$row['grade_hu']}</p>
+
+                      
                     </span>
                     </div> <!-- /.card-reveal -->
                   </div> <!-- /.card-section -->
