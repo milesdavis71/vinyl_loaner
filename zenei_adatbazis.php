@@ -5,7 +5,7 @@
 // A -> jelentése: objetkum operátor, az adatbázis objektum területén az adatbázis eléréséhez a query metódust
 // használja. 2 táblából kell adatokat kiolvasni, először a „foldreszek”-ból, aztán (később) az „orszagok”-ból.
 require_once('config/init.php');
-$sql = "SELECT * FROM music_genre";
+$sql = "SELECT * FROM performer";
 $result = $con -> query($sql);
 
 printHTML('html/header.html');
@@ -86,12 +86,12 @@ echo printMenu();
     <div class="grid-x grid-padding-x">
         <div class="cell medium-3 medium-cell-block-y">
 
-<!--Szörcs html eleje-->
+            <!--Szörcs html eleje-->
             <div class="search-box">
                 <input type="text" autocomplete="off" placeholder="Search country..." />
                 <div class="result"></div>
             </div>
-<!--Szörcs html vége-->
+            <!--Szörcs html vége-->
 
             <form name="FormName" action="#"">
 
@@ -111,11 +111,11 @@ echo printMenu();
                 // kiolvasott értékekkel.
                 while ($row = $result -> fetch_array()){
 //                            echo '<option value="'.$row[0].'">'.$row[1].'</option>';
-                    $music_genre = $_GET['style'];
-                    if(!($music_genre == $row[0])){
+                    $performer = $_GET['style'];
+                    if(!($performer == $row[0])){
                         echo '<option value="'.$row[0].'">'.$row[1].'</option>';
                     }
-                    if($music_genre == $row[0]){
+                    if($performer == $row[0]){
                         echo '<option value="'.$row[0].'" selected>'.$row[1].'</option>';
 
                     }
@@ -131,7 +131,7 @@ echo printMenu();
             $all= $result->num_rows;
 
             if (isset($_GET['style'])) {
-                $sql .= " WHERE genre_id=".$_GET['style'];
+                $sql .= " WHERE performer_id=".$_GET['style'];
             }
 
             $con ->query($sql);
@@ -139,7 +139,7 @@ echo printMenu();
             if (!$result){
                 die("Eredménytelen a lekérdezés!");
             }
-            else if($music_genre==0){
+            else if($performer==0){
                 echo '<p>'.$all.' album felel meg a keresésnek</p>';
             }
 
@@ -151,34 +151,34 @@ echo printMenu();
             </form>
         </div>
 
-<div class="cell medium-9 medium-cell-block-y">
+        <div class="cell medium-9 medium-cell-block-y">
 
-    <br>
-    <h5 class="text-center"> Albumok szűrése műfaj alapján</h5>
-    <hr>
-
-
-    <div class="grid-container">
-        <div class="grid-x grid-margin-x grid-margin-y">
-        <?php
-        $sql = "select * from album inner join performer on perform_id = performer_id inner join music_genre on genr_id = genre_id inner join grading on grd_id = grade_id";
-
-        if (isset($_GET['style'])) {
-            $sql .= $_GET['style'] != 0 ? " WHERE genre_id=".$_GET['style'] : "";
-            $sql .= " ORDER BY performer";
-        }
+            <br>
+            <h5 class="text-center"> Albumok szűrése műfaj alapján</h5>
+            <hr>
 
 
-        $result = $con -> query($sql);
+            <div class="grid-container">
+                <div class="grid-x grid-margin-x grid-margin-y">
+                    <?php
+                    $sql = "select * from album inner join performer on perform_id = performer_id inner join music_genre on genr_id = genre_id inner join grading on grd_id = grade_id";
 
-        if (!$result){
-            die("Eredménytelen a lekérdezés!");
-        }
+                    if (isset($_GET['style'])) {
+                        $sql .= $_GET['style'] != 0 ? " WHERE performer_id=".$_GET['style'] : "";
+                        $sql .= " ORDER BY performer";
+                    }
 
-// TODO kártyák abc sorrendbe, nézd meg a galáriás projektetm, ott egy result array-be van visszahívva az echo
 
-        while ($row = $result -> fetch_assoc()) {
-            echo "<div class=\"cell small-12 large-3\">
+                    $result = $con -> query($sql);
+
+                    if (!$result){
+                        die("Eredménytelen a lekérdezés!");
+                    }
+
+                    // TODO kártyák abc sorrendbe, nézd meg a galáriás projektetm, ott egy result array-be van visszahívva az echo
+
+                    while ($row = $result -> fetch_assoc()) {
+                        echo "<div class=\"cell small-12 large-3\">
                 <div class=\"card card-reveal-wrapper\">
                   <img src=\"{$row['path']}{$row['filename']}\">
                   <div class=\"card-section\">
@@ -190,12 +190,12 @@ echo printMenu();
                        
                         <i class=\"fa fa-angle-down close-button\"><span class=\"show-for-sr\">Close</span></i>
                         ";
-            if($row['avbl']){
-                echo '<p>A hanglemez kikölcsönözhető.</p>';
-            } else{
-                echo '<p>A hanglemezt kikölcsönözték.</p>';
-            }
-            echo "    <p>A lemez kiadásának éve: {$row['release_date']}</p>
+                        if($row['avbl']){
+                            echo '<p>A hanglemez kikölcsönözhető.</p>';
+                        } else{
+                            echo '<p>A hanglemezt kikölcsönözték.</p>';
+                        }
+                        echo "    <p>A lemez kiadásának éve: {$row['release_date']}</p>
                       <p>Az album műfaja: {$row['genre']}</p>
                       <p>Lemezminőség: {$row['grade_hu']}</p>
 
@@ -206,13 +206,13 @@ echo printMenu();
                 </div> <!-- /.card -->
                 </div>";
 
-        }
-        ?>
- </div>
-    </div>
-</div>
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
 
-<?php
-printHTML('html/footer.html');
-$con -> close();
-?>
+        <?php
+        printHTML('html/footer.html');
+        $con -> close();
+        ?>
