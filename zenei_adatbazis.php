@@ -1,5 +1,4 @@
 <?php
-//Küldés__
 // a connect php-hez csatlakozási lehetőségek:
 // include, include_omce. require, require_once
 // 1. adatbázishoz való csatlakozáshoz az utolsó a jó, mert szükséges, de csak egyszer.
@@ -15,72 +14,76 @@ echo printMenu();
 
 ?>
 <!--Szörcs css-->
-<style type="text/css">
-    body{
-        font-family: Arail, sans-serif;
-    }
-    /* Formatting search box */
-    .search-box{
-        position: relative;
-        display: inline-block;
-        font-size: 14px;
-    }
-    .search-box input[type="text"]{
-        height: 32px;
-        padding: 5px 10px;
-        border: 1px solid #CCCCCC;
-        font-size: 14px;
-    }
-    .result{
-        position: absolute;
-        z-index: 999;
-        top: 100%;
-        left: 0;
-    }
-    .search-box input[type="text"], .result{
-        width: 100%;
-        box-sizing: border-box;
-    }
-    /* Formatting result items */
-    .result p{
-        margin: 0;
-        padding: 7px 10px;
-        border: 1px solid #CCCCCC;
-        border-top: none;
-        cursor: pointer;
-    }
-    .result p:hover{
-        background: #f2f2f2;
-    }
-</style>
+<!--<style type="text/css">-->
+<!--    body{-->
+<!--        font-family: Arail, sans-serif;-->
+<!--    }-->
+<!--    /* Formatting search box */-->
+<!--    .search-box{-->
+<!--        position: relative;-->
+<!--        display: inline-block;-->
+<!--        font-size: 14px;-->
+<!--    }-->
+<!--    .search-box input[type="text"]{-->
+<!--        height: 32px;-->
+<!--        padding: 5px 10px;-->
+<!--        border: 1px solid #CCCCCC;-->
+<!--        font-size: 14px;-->
+<!--    }-->
+<!--    .result{-->
+<!--        position: absolute;-->
+<!--        z-index: 999;-->
+<!--        top: 100%;-->
+<!--        left: 0;-->
+<!--    }-->
+<!--    .search-box input[type="text"], .result{-->
+<!--        width: 100%;-->
+<!--        box-sizing: border-box;-->
+<!--    }-->
+<!--    /* Formatting result items */-->
+<!--    .result p{-->
+<!--        margin: 0;-->
+<!--        padding: 7px 10px;-->
+<!--        border: 1px solid #CCCCCC;-->
+<!--        border-top: none;-->
+<!--        cursor: pointer;-->
+<!--    }-->
+<!--    .result p:hover{-->
+<!--        background: #f2f2f2;-->
+<!--    }-->
+<!--</style>-->
 <!--Szörcs css vége-->
 
 <!--Szörcs script-->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('.search-box input[type="text"]').on("keyup input", function(){
-            /* Get input value on change */
-            var inputVal = $(this).val();
-            var resultDropdown = $(this).siblings(".result");
-            if(inputVal.length){
-                $.get("backend-search.php", {term: inputVal}).done(function(data){
-                    // Display the returned data in browser
-                    resultDropdown.html(data);
-                });
-            } else{
-                resultDropdown.empty();
-            }
-        });
-
-        // Set search input value on click of result item
-        $(document).on("click", ".result p", function(){
-            $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
-            $(this).parent(".result").empty();
-        });
-    });
-</script>
+<!--<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>-->
+<!--<script type="text/javascript">-->
+<!--    $(document).ready(function(){-->
+<!--        $('.search-box input[type="text"]').on("keyup input", function(){-->
+<!--            /* Get input value on change */-->
+<!--            var inputVal = $(this).val();-->
+<!--            var resultDropdown = $(this).siblings(".result");-->
+<!--            if(inputVal.length){-->
+<!--                $.get("backend-search.php", {term: inputVal}).done(function(data){-->
+<!--                    // Display the returned data in browser-->
+<!--                    resultDropdown.html(data);-->
+<!--                });-->
+<!--            } else{-->
+<!--                resultDropdown.empty();-->
+<!--            }-->
+<!--        });-->
+<!---->
+<!--        // Set search input value on click of result item-->
+<!--        $(document).on("click", ".result p", function(){-->
+<!--            $(this).parents(".search-box").find('input[type="text"]').val($(this).text());-->
+<!--            $(this).parent(".result").empty();-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 <!--Szörcs script vége-->
+
+<!--Radio button script eleje-->
+
+<!--Radio button script vége-->
 
 
 <div class="cell medium-auto medium-cell-block-container">
@@ -88,11 +91,27 @@ echo printMenu();
         <div class="cell medium-3 medium-cell-block-y">
 
             <!--Szörcs html eleje-->
-            <div class="search-box">
-                <input type="text" autocomplete="off" placeholder="Search country..." />
-                <div class="result"></div>
-            </div>
+<!--            <div class="search-box">-->
+<!--                <input type="text" autocomplete="off" placeholder="Search country..." />-->
+<!--                <div class="result"></div>-->
+<!--            </div>-->
             <!--Szörcs html vége-->
+
+            <!--     Stackowerflow       -->
+            <br>
+            <h6>Műfaj kiválasztása</h6>
+            <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
+
+            <form action="" method="post">
+                <input type="radio" name="genre" value="0" checked="checked">Mind<br>
+                <input type="radio" name="genre" value="1">rock<br>
+                <input type="radio" name="genre" value="2">jazz<br>
+                <input type="radio" name="genre" value="3">klasszikus<br>
+                <input type="radio" name="genre" value="4">elektronikus<br>
+                <input type="submit" class="button" name="button" value="Szűrés"/></form>
+
+            <h6>Előadó kiválasztása</h6>
+            <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
 
             <form>
 
@@ -153,12 +172,6 @@ echo printMenu();
 
 
 
-<!--     Stackowerflow       -->
-            <form action="" method="post">
-                <input type="radio" name="genre" value="1" checked="checked">MasterCard<br>
-                <input type="radio" name="genre" value="2">Visa<br>
-                <input type="radio" name="genre" value="3 Express">American Express<br>
-                <input type="submit" name="button" value="Submit"/></form>
             <?php
 
             if(isset($_POST['genre'])){
@@ -176,7 +189,7 @@ echo printMenu();
         <div class="cell medium-9 medium-cell-block-y">
 
             <br>
-            <h5 class="text-center"> Albumok szűrése műfaj alapján</h5>
+            <h5 class="text-center">Lemezeink</h5>
             <hr>
 
 
@@ -185,14 +198,13 @@ echo printMenu();
                     <?php
                     $sql = "select * from album inner join performer on perform_id = performer_id inner join music_genre on genr_id = genre_id inner join grading on grd_id = grade_id";
 
+
                      if (isset($_POST['genre'])) {
                         $sql .= $_POST['genre'] != 0 ? " WHERE genre_id=".$_POST['genre'] : "";
-                        $sql .= " OR performer_id=$name_of_radio_button";
-
                         $sql .= " ORDER BY performer";
                     }
 
-                    if (isset($_GET['performer'])) {
+                    elseif (isset($_GET['performer'])) {
                         $sql .= $_GET['performer'] != 0 ? " WHERE performer_id=".$_GET['performer'] : "";
                         $sql .= " ORDER BY performer";
                     }
