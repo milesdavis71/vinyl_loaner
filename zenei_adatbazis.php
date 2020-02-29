@@ -93,9 +93,9 @@ echo printMenu();
             </div>
             <!--Szörcs html vége-->
 
-            <form name="FormName" action="#"">
+            <form>
 
-            <select class="form-control" name="style">
+            <select class="form-control" name="performer">
                 <option value="0">Mind</option>
                 <?php
                 // 2. A kontinensek nevének beinjektálása a select listába
@@ -111,7 +111,7 @@ echo printMenu();
                 // kiolvasott értékekkel.
                 while ($row = $result -> fetch_array()){
 //                            echo '<option value="'.$row[0].'">'.$row[1].'</option>';
-                    $performer = $_GET['style'];
+                    $performer = $_GET['performer'];
                     if(!($performer == $row[0])){
                         echo '<option value="'.$row[0].'">'.$row[1].'</option>';
                     }
@@ -130,8 +130,8 @@ echo printMenu();
             $result = $con -> query($sql);
             $all= $result->num_rows;
 
-            if (isset($_GET['style'])) {
-                $sql .= " WHERE performer_id=".$_GET['style'];
+            if (isset($_GET['performer'])) {
+                $sql .= " WHERE performer_id=".$_GET['performer'];
             }
 
             $con ->query($sql);
@@ -143,42 +143,33 @@ echo printMenu();
                 echo '<p>'.$all.' album felel meg a keresésnek</p>';
             }
 
-            else if (!($_GET['style']==0)){
+            else if (!($_GET['performer']==0)){
                 echo '<p>'.$result->num_rows.' album felel meg a keresésnek';
             }
 
             ?>
             </form>
 
-            <!-- Checkboxes -->
-            <div class="polls">
-                <p class="polls-question">
-                    <span class="polls-question-label">Q:</span>
-                    Choose Javascript frameworks that you use?
-                </p>
-                <div class="polls-options">
-                    <div>
-                        <input id="checkbox1" type="checkbox">
-                        <label for="checkbox1">Angular.js</label>
-                    </div>
-                    <div>
-                        <input id="checkbox2" type="checkbox">
-                        <label for="checkbox2">React.js</label>
-                    </div>
-                    <div>
-                        <input id="checkbox3" type="checkbox">
-                        <label for="checkbox3">Vue.js</label>
-                    </div>
-                    <div>
-                        <input id="checkbox4" type="checkbox">
-                        <label for="checkbox4">Knockout.js</label>
-                    </div>
-                </div>
-                <div class="polls-submit">
-                    <input type="submit" class="button" value="Submit Vote">
-                </div>
-            </div>
-<!--            Checkbox vége-->
+
+
+<!--     Stackowerflow       -->
+            <form action="" method="post">
+                <input type="radio" name="genre" value="1" checked="checked">MasterCard<br>
+                <input type="radio" name="genre" value="2">Visa<br>
+                <input type="radio" name="genre" value="3 Express">American Express<br>
+                <input type="submit" name="button" value="Submit"/></form>
+            <?php
+
+            if(isset($_POST['genre'])){
+                $name_of_radio_button= $_POST ['genre'];
+            } else {
+                $name_of_radio_button= "No Button Selected";
+            }
+
+            ?>
+
+            <!--     Stackowerflow vége       -->
+
         </div>
 
         <div class="cell medium-9 medium-cell-block-y">
@@ -193,10 +184,19 @@ echo printMenu();
                     <?php
                     $sql = "select * from album inner join performer on perform_id = performer_id inner join music_genre on genr_id = genre_id inner join grading on grd_id = grade_id";
 
-                    if (isset($_GET['style'])) {
-                        $sql .= $_GET['style'] != 0 ? " WHERE performer_id=".$_GET['style'] : "";
+                     if (isset($_POST['genre'])) {
+                        $sql .= $_POST['genre'] != 0 ? " WHERE genre_id=".$_POST['genre'] : "";
+                        $sql .= " OR performer_id=$name_of_radio_button";
+
                         $sql .= " ORDER BY performer";
                     }
+
+                    if (isset($_GET['performer'])) {
+                        $sql .= $_GET['performer'] != 0 ? " WHERE performer_id=".$_GET['performer'] : "";
+                        $sql .= " ORDER BY performer";
+                    }
+
+
 
 
                     $result = $con -> query($sql);
