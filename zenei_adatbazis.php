@@ -103,20 +103,22 @@ echo printMenu();
             <h6>Műfaj kiválasztása</h6>
             <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
 
-            <form action="" method="post">
+            <form action="" method="#">
                 <input type="radio" name="genre" value="0" checked="checked">Mind<br>
                 <input type="radio" name="genre" value="1">rock<br>
                 <input type="radio" name="genre" value="2">jazz<br>
                 <input type="radio" name="genre" value="3">klasszikus<br>
                 <input type="radio" name="genre" value="4">elektronikus<br>
-                <input type="submit" class="button" name="button" value="Szűrés"/></form>
+                <input type="submit" class="button" name="button" value="Szűrés"/>
+            </form>
 
             <h6>Előadó kiválasztása</h6>
             <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
 
+
             <form>
 
-            <select class="form-control" name="performer">
+            <select name="performer">
                 <option value="0">Mind</option>
                 <?php
                 // 2. A kontinensek nevének beinjektálása a select listába
@@ -145,7 +147,17 @@ echo printMenu();
                 ?>
             </select>
 
+
             <button type="submit" class="button">Szűrés</button>
+                <h6>Kölcsönzés állapota</h6>
+                <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
+
+                <form action="" method="#">
+                    <input type="radio" name="avbl" value="0" checked="checked">Mind<br>
+                    <input type="radio" name="avbl" value="1">Kikölcsönözhető<br>
+                    <input type="radio" name="avbl" value="2">Nem kikölcsönözhető<br>
+                    <input type="submit" class="button" name="button" value="Szűrés"/>
+                </form>
             <?php
             $sql = "SELECT * FROM album";
             $result = $con -> query($sql);
@@ -173,10 +185,13 @@ echo printMenu();
 
 
 
+
+
+
             <?php
 
-            if(isset($_POST['genre'])){
-                $name_of_radio_button= $_POST ['genre'];
+            if(isset($_GET['genre'])){
+                $name_of_radio_button= $_GET ['genre'];
             } else {
                 $name_of_radio_button= "No Button Selected";
             }
@@ -200,9 +215,10 @@ echo printMenu();
                     $sql = "select * from album inner join performer on perform_id = performer_id inner join music_genre on genr_id = genre_id inner join grading on grd_id = grade_id";
 
 
-                     if (isset($_POST['genre'])) {
-                        $sql .= $_POST['genre'] != 0 ? " WHERE genre_id=".$_POST['genre'] : "";
-                        $sql .= " ORDER BY performer";
+                     if (isset($_GET['genre'])) {
+                        $sql .= $_GET['genre'] != 0 ? " WHERE genre_id=".$_GET['genre'] : "";
+                         $sql .= " ORDER BY performer";
+
                     }
 
                     elseif (isset($_GET['performer'])) {
