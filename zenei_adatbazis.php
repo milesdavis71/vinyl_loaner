@@ -1,5 +1,5 @@
 <?php
-// push
+// pushpush
 // a connect php-hez csatlakozási lehetőségek:
 // include, include_omce. require, require_once
 // 1. adatbázishoz való csatlakozáshoz az utolsó a jó, mert szükséges, de csak egyszer.
