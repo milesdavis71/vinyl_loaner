@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2020. Már 01. 11:01
+-- Létrehozás ideje: 2020. Már 01. 11:23
 -- Kiszolgáló verziója: 10.4.6-MariaDB
 -- PHP verzió: 7.3.9
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `vinyl_loaner`
 --
+CREATE DATABASE IF NOT EXISTS `vinyl_loaner` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `vinyl_loaner`;
 
 -- --------------------------------------------------------
 
@@ -28,6 +30,7 @@ SET time_zone = "+00:00";
 -- Tábla szerkezet ehhez a táblához `album`
 --
 
+DROP TABLE IF EXISTS `album`;
 CREATE TABLE `album` (
   `id` int(11) NOT NULL,
   `genre_id` int(11) NOT NULL,
@@ -108,6 +111,7 @@ INSERT INTO `album` (`id`, `genre_id`, `performer_id`, `title_of_record`, `relea
 -- Tábla szerkezet ehhez a táblához `grading`
 --
 
+DROP TABLE IF EXISTS `grading`;
 CREATE TABLE `grading` (
   `grd_id` int(11) NOT NULL,
   `grade_hu` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
@@ -133,6 +137,7 @@ INSERT INTO `grading` (`grd_id`, `grade_hu`, `grade_short`, `grade`, `descript`)
 -- Tábla szerkezet ehhez a táblához `music_genre`
 --
 
+DROP TABLE IF EXISTS `music_genre`;
 CREATE TABLE `music_genre` (
   `genr_id` int(11) NOT NULL,
   `genre` varchar(255) COLLATE utf8_hungarian_ci NOT NULL
@@ -154,6 +159,7 @@ INSERT INTO `music_genre` (`genr_id`, `genre`) VALUES
 -- Tábla szerkezet ehhez a táblához `performer`
 --
 
+DROP TABLE IF EXISTS `performer`;
 CREATE TABLE `performer` (
   `perform_id` int(11) NOT NULL,
   `performer` varchar(255) COLLATE utf8_hungarian_ci NOT NULL
@@ -211,6 +217,7 @@ INSERT INTO `performer` (`perform_id`, `performer`) VALUES
 -- Tábla szerkezet ehhez a táblához `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `user_email` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,

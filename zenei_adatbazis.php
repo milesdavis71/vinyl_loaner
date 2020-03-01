@@ -111,15 +111,16 @@ echo printMenu();
                 <input type="radio" name="genre" value="4" <?php if (isset($_GET['genre']) && $_GET['genre'] == '4')  echo ' checked="checked"';?> />elektronikus<br>
                 <input type="submit" class="button" name="button" value="Szűrés"/>
 
-
-
-<!--                <input type="radio" name="genre" value="0" checked="checked">Mind<br>-->
-<!--                <input type="radio" name="genre" value="1">rock<br>-->
-<!--                <input type="radio" name="genre" value="2">jazz<br>-->
-<!--                <input type="radio" name="genre" value="3">klasszikus<br>-->
-<!--                <input type="radio" name="genre" value="4">elektronikus<br>-->
-<!--                <input type="submit" class="button" name="button" value="Szűrés"/>-->
             </form>
+
+            <!--AVBL-->
+<!--            <h6>Kölcsönzés állapota</h6>-->
+<!--            <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">-->
+<!--            <form action="" method="GET">-->
+<!--                <input type="radio" name="avbl" value="0" --><?php //if (isset($_GET['avbl']) && $_GET['avbl'] == '0')  echo ' checked="checked"';?><!-- />Kikölcsönözhető<br>-->
+<!--                <input type="radio" name="avbl" value="1" --><?php //if (isset($_GET['avbl']) && $_GET['avbl'] == '1')  echo ' checked="checked"';?><!-- />Nem Kikölcsönözhető<br>-->
+<!--                <input type="submit" class="button" name="button" value="Szűrés"/>-->
+<!--            </form>-->
 
             <h6>Előadó kiválasztása</h6>
             <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
@@ -158,15 +159,7 @@ echo printMenu();
 
 
             <button type="submit" class="button">Szűrés</button>
-                <h6>Kölcsönzés állapota</h6>
-                <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
 
-                <form action="" method="#">
-                    <input type="radio" name="avbl" value="0" checked="checked">Mind<br>
-                    <input type="radio" name="avbl" value="1">Kikölcsönözhető<br>
-                    <input type="radio" name="avbl" value="2">Nem kikölcsönözhető<br>
-                    <input type="submit" class="button" name="button" value="Szűrés"/>
-                </form>
             <?php
             $sql = "SELECT * FROM album";
             $result = $con -> query($sql);
@@ -192,23 +185,6 @@ echo printMenu();
             ?>
             </form>
 
-
-
-
-
-
-            <?php
-
-            if(isset($_GET['genre'])){
-                $name_of_radio_button= $_GET ['genre'];
-            } else {
-                $name_of_radio_button= "No Button Selected";
-            }
-
-            ?>
-
-            <!--     Stackowerflow vége       -->
-
         </div>
 
         <div class="cell medium-9 medium-cell-block-y">
@@ -233,7 +209,12 @@ echo printMenu();
                     elseif (isset($_GET['performer'])) {
                         $sql .= $_GET['performer'] != 0 ? " WHERE performer_id=".$_GET['performer'] : "";
                         $sql .= " ORDER BY performer";
-                    }
+
+                     }
+
+
+
+
 
 
 
