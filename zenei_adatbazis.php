@@ -100,27 +100,31 @@ echo printMenu();
 
             <!--     Stackowerflow       -->
             <br>
-            <h6>Műfaj kiválasztása</h6>
-            <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
 
-            <form action="" method="GET">
-                <input type="radio" name="genre" value="0" <?php if (isset($_GET['genre']) && $_GET['genre'] == '0')  echo ' checked="checked"';?> />Mind<br>
+            <div class="callout">
+                <h6>Műfaj kiválasztása</h6>
+                <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
+                <form action="" method="GET">
                 <input type="radio" name="genre" value="1" <?php if (isset($_GET['genre']) && $_GET['genre'] == '1')  echo ' checked="checked"';?> />rock<br>
                 <input type="radio" name="genre" value="2" <?php if (isset($_GET['genre']) && $_GET['genre'] == '2')  echo ' checked="checked"';?> />jazz<br>
                 <input type="radio" name="genre" value="3" <?php if (isset($_GET['genre']) && $_GET['genre'] == '3')  echo ' checked="checked"';?> />klasszikus<br>
                 <input type="radio" name="genre" value="4" <?php if (isset($_GET['genre']) && $_GET['genre'] == '4')  echo ' checked="checked"';?> />elektronikus<br>
+                <input type="radio" name="genre" value="0" <?php if (isset($_GET['genre']) && $_GET['genre'] == '0') echo ' checked="checked"';?> />Mind<br>
+
+                    <h6 class="small" style="margin-top: 0.7rem;">Kölcsönzés állapota</h6>
+                    <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
+
+                <input type="radio" name="avbl" value="1" <?php if (isset($_GET['avbl']) && $_GET['avbl'] == '1')  echo ' checked="checked"';?> />Kikölcsönözhető<br>
+                <input type="radio" name="avbl" value="2" <?php if (isset($_GET['avbl']) && $_GET['avbl'] == '2')  echo ' checked="checked"';?> />Nem Kikölcsönözhető<br>
+                <input type="radio" name="avbl" value="0" <?php if (isset($_GET['avbl']) && $_GET['avbl'] == '0')  echo ' checked="checked"';?> />Mind<br>
+
                 <input type="submit" class="button" name="button" value="Szűrés"/>
 
             </form>
+            </div>
 
-            <!--AVBL-->
-<!--            <h6>Kölcsönzés állapota</h6>-->
-<!--            <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">-->
-<!--            <form action="" method="GET">-->
-<!--                <input type="radio" name="avbl" value="0" --><?php //if (isset($_GET['avbl']) && $_GET['avbl'] == '0')  echo ' checked="checked"';?><!-- />Kikölcsönözhető<br>-->
-<!--                <input type="radio" name="avbl" value="1" --><?php //if (isset($_GET['avbl']) && $_GET['avbl'] == '1')  echo ' checked="checked"';?><!-- />Nem Kikölcsönözhető<br>-->
-<!--                <input type="submit" class="button" name="button" value="Szűrés"/>-->
-<!--            </form>-->
+
+<div class="callout">
 
             <h6>Előadó kiválasztása</h6>
             <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
@@ -184,6 +188,7 @@ echo printMenu();
 
             ?>
             </form>
+</div>
 
         </div>
 
@@ -197,19 +202,26 @@ echo printMenu();
             <div class="grid-container">
                 <div class="grid-x grid-margin-x grid-margin-y">
                     <?php
-                    $sql = "select * from album inner join performer on perform_id = performer_id inner join music_genre on genr_id = genre_id inner join grading on grd_id = grade_id";
+                    $sql = "select * from album inner join performer on perform_id = performer_id inner join music_genre on genr_id = genre_id inner join grading on grd_id = grade_id inner join available on avb_id = avbl_id";
 
 
-                     if (isset($_GET['genre'])) {
-                        $sql .= $_GET['genre'] != 0 ? " WHERE genre_id=".$_GET['genre'] : "";
-                         $sql .= " ORDER BY performer";
+                     if (isset($_GET['genre'], $_GET['avbl'])) {
+                         if ($_GET['avbl']=="0"){
+                             $sql .= $_GET['genre'] != 0 ? " WHERE genre_id=".$_GET['genre'] : "";
+                             $sql .= " ORDER BY performer";
+
+
+                         } else {
+                             $sql .= $_GET['genre'] != 0 ? " WHERE genre_id=".$_GET['genre'] : "";
+                             $sql .= " AND avbl_id=".$_GET['avbl'];
+                             $sql .= " ORDER BY performer";
+                         }
 
                     }
 
-                    elseif (isset($_GET['performer'])) {
+                    if (isset($_GET['performer'])) {
                         $sql .= $_GET['performer'] != 0 ? " WHERE performer_id=".$_GET['performer'] : "";
                         $sql .= " ORDER BY performer";
-
                      }
 
 
