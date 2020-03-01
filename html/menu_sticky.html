@@ -12,14 +12,23 @@
 </div>
 <div class="top-bar-container" data-sticky-container id="example-menu">
     <div class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: small;">
+<!--        TODO szürke csík a mobil nézet menü tetején, kiszedni-->
         <div class="top-bar">
-            <div class="top-bar-left">
+            <div class="top-bar-left show-for-large">
                 <ul class="dropdown menu" data-dropdown-menu>
                     <li><a href="index.php"><img onmouseenter="highlight(this)" onmouseleave="unhighlight(this)" src="assets/img/icon_small_yellow.png"></a></li>
                     <li style="margin-top: 8px"><a href="#0">Bemutatkozás</a></li>
 
                     ::ki_belepes
+                </ul>
         </div>
+            <div class="top-bar-left show-for-small-only">
+                <ul class="vertical dropdown menu text-center" data-dropdown-menu>
+                    <li style="margin-top: 8px"><a href="#0">Bemutatkozás</a></li>
+
+                    ::ki_belepes
+                </ul>
+            </div>
     </div>
 </div>
 
