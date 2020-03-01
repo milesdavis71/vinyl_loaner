@@ -103,12 +103,12 @@ echo printMenu();
             <h6>Műfaj kiválasztása</h6>
             <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
 
-            <form action="" method="POST">
-                <input type="radio" name="genre" value="0" <?php if (isset($_POST['genre']) && $_POST['genre'] == '0')  echo ' checked="checked"';?> />Mind<br>
-                <input type="radio" name="genre" value="1" <?php if (isset($_POST['genre']) && $_POST['genre'] == '1')  echo ' checked="checked"';?> />rock<br>
-                <input type="radio" name="genre" value="2" <?php if (isset($_POST['genre']) && $_POST['genre'] == '2')  echo ' checked="checked"';?> />jazz<br>
-                <input type="radio" name="genre" value="3" <?php if (isset($_POST['genre']) && $_POST['genre'] == '3')  echo ' checked="checked"';?> />klasszikus<br>
-                <input type="radio" name="genre" value="4" <?php if (isset($_POST['genre']) && $_POST['genre'] == '4')  echo ' checked="checked"';?> />elektronikus<br>
+            <form action="" method="GET">
+                <input type="radio" name="genre" value="0" <?php if (isset($_GET['genre']) && $_GET['genre'] == '0')  echo ' checked="checked"';?> />Mind<br>
+                <input type="radio" name="genre" value="1" <?php if (isset($_GET['genre']) && $_GET['genre'] == '1')  echo ' checked="checked"';?> />rock<br>
+                <input type="radio" name="genre" value="2" <?php if (isset($_GET['genre']) && $_GET['genre'] == '2')  echo ' checked="checked"';?> />jazz<br>
+                <input type="radio" name="genre" value="3" <?php if (isset($_GET['genre']) && $_GET['genre'] == '3')  echo ' checked="checked"';?> />klasszikus<br>
+                <input type="radio" name="genre" value="4" <?php if (isset($_GET['genre']) && $_GET['genre'] == '4')  echo ' checked="checked"';?> />elektronikus<br>
                 <input type="submit" class="button" name="button" value="Szűrés"/>
 
 
@@ -224,8 +224,8 @@ echo printMenu();
                     $sql = "select * from album inner join performer on perform_id = performer_id inner join music_genre on genr_id = genre_id inner join grading on grd_id = grade_id";
 
 
-                     if (isset($_POST['genre'])) {
-                        $sql .= $_POST['genre'] != 0 ? " WHERE genre_id=".$_POST['genre'] : "";
+                     if (isset($_GET['genre'])) {
+                        $sql .= $_GET['genre'] != 0 ? " WHERE genre_id=".$_GET['genre'] : "";
                          $sql .= " ORDER BY performer";
 
                     }
@@ -234,6 +234,8 @@ echo printMenu();
                         $sql .= $_GET['performer'] != 0 ? " WHERE performer_id=".$_GET['performer'] : "";
                         $sql .= " ORDER BY performer";
                     }
+
+
 
 
 
