@@ -948,8 +948,6 @@ var Foundation = {
   },
   getFnName: functionName,
   addToJquery: function addToJquery($) {
-    // TODO: consider not making this a jQuery function
-    // TODO: need way to reflow vs. re-initialize
 
     /**
      * The Foundation jQuery method.
@@ -1178,7 +1176,6 @@ function OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) {
  * @function
  * @param {jQuery || HTML} element - jQuery object or DOM element for which to get the dimensions. Can be any element other that document or window.
  * @returns {Object} - nested object of integer pixel values
- * TODO - if element is window, return only those values.
  */
 
 
@@ -1231,7 +1228,6 @@ function GetDimensions(elem) {
  * @param {Number} vOffset - integer pixel value of desired vertical separation between anchor and element.
  * @param {Number} hOffset - integer pixel value of desired horizontal separation between anchor and element.
  * @param {Boolean} isOverflow - if a collision event is detected, sets to true to default the element to full width - any desired offset.
- * TODO alter/rewrite to work with `em` values as well/instead of pixels
  */
 
 
@@ -4804,7 +4800,7 @@ function (_Plugin) {
       return this.triedPositions[position] && this.triedPositions[position].length == ALIGNMENTS[position].length;
     } // When we're trying to center, we don't want to apply offset that's going to
     // take us just off center, so wrap around to return 0 for the appropriate
-    // offset in those alignments.  TODO: Figure out if we want to make this
+    // offset in those alignments.
     // configurable behavior... it feels more intuitive, especially for tooltips, but
     // it's possible someone might actually want to start from center and then nudge
     // slightly off.
@@ -7541,7 +7537,6 @@ function (_Plugin) {
      * @param {Object} event - Event object passed from listener.
      * @param {jQuery} trigger - element that triggered the off-canvas to open.
      * @fires OffCanvas#opened
-     * @todo also trigger 'open' event?
      */
 
   }, {
@@ -7867,7 +7862,6 @@ OffCanvas.defaults = {
    * @option
    * @type {string}
    * @default reveal-for-
-   * @todo improve the regex testing for this.
    */
   revealClass: 'reveal-for-',
 
@@ -7939,7 +7933,6 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      // @TODO: consider discussion on PR #9278 about DOM pollution by changeSlide
       this._reset();
 
       this.$wrapper = this.$element.find(".".concat(this.options.containerClass));
@@ -8936,7 +8929,6 @@ function (_Plugin) {
     }
     /**
      * Updates position of modal
-     * TODO:  Figure out if we actually need to cache these values or if it doesn't matter
      * @private
      */
 
@@ -9313,7 +9305,6 @@ function (_Plugin) {
 
       function finishUp() {
         // Get the current top before the modal is closed and restore the scroll after.
-        // TODO: use component properties instead of HTML properties
         // See https://github.com/zurb/foundation-sites/pull/10786
         var scrollTop = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0___default()("html").css("top"));
 
@@ -9798,7 +9789,7 @@ function (_Plugin) {
 
       var css = {};
 
-      this._setValues($hndl, location); // TODO update to calculate based on values set to respective inputs??
+      this._setValues($hndl, location);
 
 
       if (isDbl) {
@@ -9921,7 +9912,6 @@ function (_Plugin) {
      * @param {Object} e - the `event` object passed from the listener.
      * @param {jQuery} $handle - the current handle to calculate for, if selected.
      * @param {Number} val - floating point number for the new value of the slider.
-     * TODO clean this up, there's a lot of repeated code between this and the _setHandlePos fn.
      */
 
   }, {
@@ -11886,7 +11876,6 @@ function (_Positionable) {
     }
     /**
      * adds event listeners for the tooltip and its anchor
-     * TODO combine some of the listeners like focus and mouseenter, etc.
      * @private
      */
 
@@ -13227,7 +13216,6 @@ Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
               if (nodeType === 9) {
                 if (elem = context.getElementById(m)) {
                   // Support: IE, Opera, Webkit
-                  // TODO: identify versions
                   // getElementById can match elements by name instead of ID
                   if (elem.id === m) {
                     results.push(elem);
@@ -13239,7 +13227,6 @@ Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
 
               } else {
                 // Support: IE, Opera, Webkit
-                // TODO: identify versions
                 // getElementById can match elements by name instead of ID
                 if (newContext && (elem = newContext.getElementById(m)) && contains(context, elem) && elem.id === m) {
                   results.push(elem);
@@ -16190,7 +16177,7 @@ Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
   //	2. Improve the module's maintainability by reducing the storage
   //		paths to a single mechanism.
   //	3. Use the same single mechanism to support "private" and "user" data.
-  //	4. _Never_ expose "private" data to user code (TODO: Drop _data, _removeData)
+  //	4. _Never_ expose "private" data to user code
   //	5. Avoid exposing implementation details on user objects (eg. expando properties)
   //	6. Provide a clear path for implementation upgrade to WeakMap in 2014
 
@@ -16255,7 +16242,6 @@ Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
     removeData: function removeData(elem, name) {
       dataUser.remove(elem, name);
     },
-    // TODO: Now that all calls to _data and _removeData have been replaced
     // with direct calls to dataPriv methods, these can be deprecated.
     _data: function _data(elem, name, data) {
       return dataPriv.access(elem, name, data);
