@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2020. Feb 29. 06:03
--- Kiszolgáló verziója: 10.4.11-MariaDB
--- PHP verzió: 7.4.1
+-- Létrehozás ideje: 2020. Már 01. 11:01
+-- Kiszolgáló verziója: 10.4.6-MariaDB
+-- PHP verzió: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `vinyl_loaner`
 --
-CREATE DATABASE IF NOT EXISTS `vinyl_loaner` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `vinyl_loaner`;
 
 -- --------------------------------------------------------
 
@@ -30,7 +28,6 @@ USE `vinyl_loaner`;
 -- Tábla szerkezet ehhez a táblához `album`
 --
 
-DROP TABLE IF EXISTS `album`;
 CREATE TABLE `album` (
   `id` int(11) NOT NULL,
   `genre_id` int(11) NOT NULL,
@@ -39,7 +36,7 @@ CREATE TABLE `album` (
   `release_date` year(4) NOT NULL,
   `grade_id` int(11) NOT NULL,
   `loan_price` int(11) NOT NULL,
-  `avbl` tinyint(1) NOT NULL,
+  `avbl` int(1) NOT NULL,
   `path` varchar(255) COLLATE utf8_hungarian_ci NOT NULL DEFAULT 'assets/img/covers/',
   `filename` varchar(255) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
@@ -111,7 +108,6 @@ INSERT INTO `album` (`id`, `genre_id`, `performer_id`, `title_of_record`, `relea
 -- Tábla szerkezet ehhez a táblához `grading`
 --
 
-DROP TABLE IF EXISTS `grading`;
 CREATE TABLE `grading` (
   `grd_id` int(11) NOT NULL,
   `grade_hu` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
@@ -137,7 +133,6 @@ INSERT INTO `grading` (`grd_id`, `grade_hu`, `grade_short`, `grade`, `descript`)
 -- Tábla szerkezet ehhez a táblához `music_genre`
 --
 
-DROP TABLE IF EXISTS `music_genre`;
 CREATE TABLE `music_genre` (
   `genr_id` int(11) NOT NULL,
   `genre` varchar(255) COLLATE utf8_hungarian_ci NOT NULL
@@ -159,7 +154,6 @@ INSERT INTO `music_genre` (`genr_id`, `genre`) VALUES
 -- Tábla szerkezet ehhez a táblához `performer`
 --
 
-DROP TABLE IF EXISTS `performer`;
 CREATE TABLE `performer` (
   `perform_id` int(11) NOT NULL,
   `performer` varchar(255) COLLATE utf8_hungarian_ci NOT NULL
@@ -217,7 +211,6 @@ INSERT INTO `performer` (`perform_id`, `performer`) VALUES
 -- Tábla szerkezet ehhez a táblához `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `user_email` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
