@@ -11,7 +11,7 @@ $result = $con -> query($sql);
 
 printHTML('html/header.html');
 
-echo printMenu();
+echo printMenuFix();
 
 ?>
 <!--Szörcs css-->
