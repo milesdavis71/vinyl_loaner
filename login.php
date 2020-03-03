@@ -26,7 +26,7 @@ if (!empty($_POST['email']) && (!empty($_POST['password']))){
         //dd($id);
         $_SESSION['fid'] = $id;
 
-        header('Location: zenei_adatbazis.php');
+        header('Location: albums.php');
     } else {
         // sikertelen belépéskor beírja a $_SESSION szuperglobal tömbjébe a hibaüzenetet.
         $_SESSION['loginError'] = "Helytelen belépési adatok!";

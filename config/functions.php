@@ -52,7 +52,7 @@ function printMenuFix() {
     if (isLogged()) {
         $menu = str_replace('::ki_belepes',
 
-            '<li style="margin-top: 8px"><a href="zenei_adatbazis.php">Hanglemezeink</a></li>
+            '<li style="margin-top: 8px"><a href="albums.php">Hanglemezeink</a></li>
             <li style="margin-top: 8px"><a href="#0">Elérhetőségeink</a></li>
             <li style="margin-top: 8px"><a href="logout.php">Kilép</a></ul></li>
                 </ul>', $menu);
