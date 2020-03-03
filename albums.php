@@ -17,7 +17,7 @@ echo printMenuFix();
 <div class="grid-y medium-grid-frame">
     <div class="cell medium-auto medium-cell-block-container">
         <div class="grid-x grid-padding-x">
-            <div class="cell medium-3 medium-cell-block-y">
+            <div class="cell medium-2 medium-cell-block-y">
                 <br>
                 <div class="callout">
                     <h6>Műfaj kiválasztása</h6>
@@ -99,7 +99,7 @@ echo printMenuFix();
 
             </div> <!-- close medium-3 medium-cell-block-y -->
 
-            <div class="cell medium-9 medium-cell-block-y">
+            <div class="cell medium-10 medium-cell-block-y">
                 <br>
                 <h5 class="text-center">Lemezeink</h5>
                 <hr>
@@ -131,12 +131,12 @@ echo printMenuFix();
                         // TODO kártyák abc sorrendbe, nézd meg a galáriás projektetm, ott egy result array-be van visszahívva az echo
 
                         while ($row = $result -> fetch_assoc()) {
-                            echo "<div class=\"cell small-12 large-3\">
+                            echo "<div class=\"cell small-12 large-2\">
                         <div class=\"card card-reveal-wrapper\">
                           <img src=\"{$row['path']}{$row['filename']}\">
                           <div class=\"card-section\">
                             <i class=\"fa fa-angle-up open-button\"><span class=\"show-for-sr\">More</span></i>
-                                <p class='text-center'>{$row['performer']}<br>
+                                <p class='text-center small'>{$row['performer']}<br>
                                 {$row['title_of_record']}</p>
                             <div class=\"card-reveal\">
                               <span class=\"card-reveal-title\">
