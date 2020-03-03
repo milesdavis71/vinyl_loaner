@@ -52,14 +52,14 @@ function printMenuFix() {
     if (isLogged()) {
         $menu = str_replace('::ki_belepes',
 
-            '<li style="margin-top: 8px"><a href="albums.php">Hanglemezeink</a></li>
+            '<li style="margin-top: 8px"><a href="albums.php?genre=0&avbl=0">Hanglemezeink</a></li>
             <li style="margin-top: 8px"><a href="#0">Elérhetőségeink</a></li>
             <li style="margin-top: 8px"><a href="logout.php">Kilép</a></ul></li>
                 </ul>', $menu);
     } else {
         $menu = str_replace('::ki_belepes',
             '
-                    <li style="margin-top: 8px"><a href="#0" data-open="exampleModal1">Hanglemezeink</a></li>
+                    <li style="margin-top: 8px"><a href="#" data-open="exampleModal1">Hanglemezeink</a></li>
                     <div class="reveal" id="exampleModal1" data-reveal>
                         <h1>Awesome. I Have It.</h1>
                         <p class="lead">Your couch. It is mine.</p>

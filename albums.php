@@ -14,7 +14,7 @@ printHTML('html/header.html');
 echo printMenuFix();
 
 ?>
-<div class="grid-y medium-grid-frame">
+    <div class="grid-y medium-grid-frame">
     <div class="cell medium-auto medium-cell-block-container">
         <div class="grid-x grid-padding-x">
             <div class="cell medium-2 medium-cell-block-y">
@@ -23,22 +23,22 @@ echo printMenuFix();
                     <h6>Műfaj kiválasztása</h6>
                     <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
                     <form action="" method="GET">
-                    <input type="radio" name="genre" value="1" <?php if (isset($_GET['genre']) && $_GET['genre'] == '1')  echo ' checked="checked"';?> />rock<br>
-                    <input type="radio" name="genre" value="2" <?php if (isset($_GET['genre']) && $_GET['genre'] == '2')  echo ' checked="checked"';?> />jazz<br>
-                    <input type="radio" name="genre" value="3" <?php if (isset($_GET['genre']) && $_GET['genre'] == '3')  echo ' checked="checked"';?> />klasszikus<br>
-                    <input type="radio" name="genre" value="4" <?php if (isset($_GET['genre']) && $_GET['genre'] == '4')  echo ' checked="checked"';?> />elektronikus<br>
-                    <input type="radio" name="genre" value="0" <?php if (isset($_GET['genre']) && $_GET['genre'] == '0') echo ' checked="checked"';?> />Mind<br>
+                        <input type="radio" name="genre" value="1" <?php if (isset($_GET['genre']) && $_GET['genre'] == '1')  echo ' checked="checked"';?> />rock<br>
+                        <input type="radio" name="genre" value="2" <?php if (isset($_GET['genre']) && $_GET['genre'] == '2')  echo ' checked="checked"';?> />jazz<br>
+                        <input type="radio" name="genre" value="3" <?php if (isset($_GET['genre']) && $_GET['genre'] == '3')  echo ' checked="checked"';?> />klasszikus<br>
+                        <input type="radio" name="genre" value="4" <?php if (isset($_GET['genre']) && $_GET['genre'] == '4')  echo ' checked="checked"';?> />elektronikus<br>
+                        <input type="radio" name="genre" value="0" <?php if (isset($_GET['genre']) && $_GET['genre'] == '0') echo ' checked="checked"';?> />Mind<br>
 
                         <h6 class="small" style="margin-top: 0.7rem;">Kölcsönzés állapota</h6>
                         <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
 
-                    <input type="radio" name="avbl" value="1" <?php if (isset($_GET['avbl']) && $_GET['avbl'] == '1')  echo ' checked="checked"';?> />Kikölcsönözhető<br>
-                    <input type="radio" name="avbl" value="2" <?php if (isset($_GET['avbl']) && $_GET['avbl'] == '2')  echo ' checked="checked"';?> />Nem Kikölcsönözhető<br>
-                    <input type="radio" name="avbl" value="0" <?php if (isset($_GET['avbl']) && $_GET['avbl'] == '0')  echo ' checked="checked"';?> />Mind<br>
+                        <input type="radio" name="avbl" value="1" <?php if (isset($_GET['avbl']) && $_GET['avbl'] == '1')  echo ' checked="checked"';?> />Kikölcsönözhető<br>
+                        <input type="radio" name="avbl" value="2" <?php if (isset($_GET['avbl']) && $_GET['avbl'] == '2')  echo ' checked="checked"';?> />Nem Kikölcsönözhető<br>
+                        <input type="radio" name="avbl" value="0" <?php if (isset($_GET['avbl']) && $_GET['avbl'] == '0')  echo ' checked="checked"';?> />Mind<br>
 
-                    <input type="submit" class="button" name="button" value="Szűrés"/>
+                        <input type="submit" class="button" name="button" value="Szűrés"/>
 
-                </form>
+                    </form>
                 </div>
                 <div class="callout">
                     <h6>Előadó kiválasztása</h6>
@@ -70,6 +70,7 @@ echo printMenuFix();
                             ?>
                         </select>
                         <button type="submit" class="button">Szűrés</button>
+
 
                         <?php
                         $sql = "SELECT * FROM album";
@@ -103,35 +104,56 @@ echo printMenuFix();
                 <br>
                 <h5 class="text-center">Lemezeink</h5>
                 <hr>
-                    <div class="grid-x grid-margin-x grid-margin-y">
-                        <?php
-                        $sql = "select * from album inner join performer on perform_id = performer_id inner join music_genre on genr_id = genre_id inner join grading on grd_id = grade_id inner join available on avb_id = avbl_id order by performer";
-                         if (isset($_GET['genre'], $_GET['avbl'])) {
-                             if ($_GET['avbl']=="0"){
-                                 $sql .= $_GET['genre'] != 0 ? " WHERE genre_id=".$_GET['genre'] : "";
-                                 $sql .= " ORDER BY performer";
-                             } else {
-                                 $sql .= $_GET['genre'] != 0 ? " WHERE genre_id=".$_GET['genre'] : "";
-                                 $sql .= " AND avbl_id=".$_GET['avbl'];
-                                 $sql .= " ORDER BY performer";
-                             }
-                        }
-
-                        if (isset($_GET['performer'])) {
-                            $sql .= $_GET['performer'] != 0 ? " WHERE performer_id=".$_GET['performer'] : "";
+                <div class="grid-x grid-margin-x grid-margin-y">
+                    <?php
+                    $sql = "select * from album inner join performer on perform_id = performer_id inner join music_genre on genr_id = genre_id inner join grading on grd_id = grade_id inner join available on avb_id = avbl_id";
+                    if (isset($_GET['genre'], $_GET['avbl'])) {
+                        if ($_GET['avbl']=="0"){
+                            $sql .= $_GET['genre'] != 0 ? " WHERE genre_id=".$_GET['genre'] : "";
                             $sql .= " ORDER BY performer";
-                         }
-
-                        $result = $con -> query($sql);
-
-                        if (!$result){
-                            die("Eredménytelen a lekérdezés!");
+                        } else {
+                            $sql .= $_GET['genre'] != 0 ? " WHERE genre_id=".$_GET['genre'] : "";
+                            $sql .= " AND avbl_id=".$_GET['avbl'];
+                            $sql .= " ORDER BY performer";
                         }
+                    }
 
-                        // TODO kártyák abc sorrendbe, nézd meg a galáriás projektetm, ott egy result array-be van visszahívva az echo
+                    elseif (isset($_GET['genre'])) {
+                        if ($_GET['genre']=="0"){
+                            $sql .= $_GET['genre'] != 0 ? " WHERE genre_id=".$_GET['genre'] : "";
+                            $sql .= " ORDER BY performer";
+                        } else {
+                            $sql .= $_GET['genre'] != 0 ? " WHERE genre_id=".$_GET['genre'] : "";
+                            $sql .= " ORDER BY performer";
+                        }
+                    }
 
-                        while ($row = $result -> fetch_assoc()) {
-                            echo "<div class=\"cell small-12 large-2\">
+                    elseif (isset($_GET['avbl'])) {
+                        if ($_GET['avbl']=="0"){
+                            $sql .= $_GET['avbl'] != 0 ? " WHERE avbl_id=".$_GET['avbl'] : "";
+                            $sql .= " ORDER BY performer";
+                        } else {
+                            $sql .= $_GET['avbl'] != 0 ? " WHERE avbl_id=".$_GET['avbl'] : "";
+                            $sql .= " ORDER BY performer";
+                        }
+                    }
+
+
+                    if (isset($_GET['performer'])) {
+                        $sql .= $_GET['performer'] != 0 ? " WHERE performer_id=".$_GET['performer'] : "";
+                        $sql .= " ORDER BY performer";
+                    }
+
+                    $result = $con -> query($sql);
+
+                    if (!$result){
+                        die("Eredménytelen a lekérdezés!");
+                    }
+
+                    // TODO kártyák abc sorrendbe, nézd meg a galáriás projektetm, ott egy result array-be van visszahívva az echo
+
+                    while ($row = $result -> fetch_assoc()) {
+                        echo "<div class=\"cell small-12 large-2\">
                         <div class=\"card card-reveal-wrapper\">
                           <img src=\"{$row['path']}{$row['filename']}\">
                           <div class=\"card-section\">
@@ -143,12 +165,12 @@ echo printMenuFix();
                                
                                 <i class=\"fa fa-angle-down close-button\"><span class=\"show-for-sr\">Close</span></i>
                                 ";
-                                if($row['avbl']){
-                                    echo '<p>A hanglemez kikölcsönözhető.</p>';
-                                } else{
-                                    echo '<p>A hanglemezt kikölcsönözték.</p>';
-                                }
-                                echo "    <p>A lemez kiadásának éve: {$row['release_date']}</p>
+                        if($row['avbl']){
+                            echo '<p>A hanglemez kikölcsönözhető.</p>';
+                        } else{
+                            echo '<p>A hanglemezt kikölcsönözték.</p>';
+                        }
+                        echo "    <p>A lemez kiadásának éve: {$row['release_date']}</p>
                               <p>Az album műfaja: {$row['genre']}</p>
                               <p>Lemezminőség: {$row['grade_hu']}</p>
         
@@ -159,14 +181,14 @@ echo printMenuFix();
                         </div> <!-- /.card -->
                     </div> <!-- /.small12large3 -->";
 
-                        }
-                        ?>
-            </div> <!-- close medium-3 medium-cell-block-y -->
-        </div> <!-- close grid-x grid-padding-x -->
-    </div> <!-- close cell medium-auto medium-cell-block-container -->
-</div> <!-- close grid-y medium-grid-frame -->
+                    }
+                    ?>
+                </div> <!-- close medium-3 medium-cell-block-y -->
+            </div> <!-- close grid-x grid-padding-x -->
+        </div> <!-- close cell medium-auto medium-cell-block-container -->
+    </div> <!-- close grid-y medium-grid-frame -->
 
-        <?php
-        printHTML('html/footer.html');
-        $con -> close();
-        ?>
+<?php
+printHTML('html/footer.html');
+$con -> close();
+?>
