@@ -105,7 +105,7 @@ echo printMenuFix();
                 <hr>
                     <div class="grid-x grid-margin-x grid-margin-y">
                         <?php
-                        $sql = "select * from album inner join performer on perform_id = performer_id inner join music_genre on genr_id = genre_id inner join grading on grd_id = grade_id inner join available on avb_id = avbl_id";
+                        $sql = "select * from album inner join performer on perform_id = performer_id inner join music_genre on genr_id = genre_id inner join grading on grd_id = grade_id inner join available on avb_id = avbl_id order by performer";
                          if (isset($_GET['genre'], $_GET['avbl'])) {
                              if ($_GET['avbl']=="0"){
                                  $sql .= $_GET['genre'] != 0 ? " WHERE genre_id=".$_GET['genre'] : "";
