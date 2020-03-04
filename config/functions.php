@@ -59,18 +59,10 @@ function printMenuFix() {
     } else {
         $menu = str_replace('::ki_belepes',
             '
-                    <li style="margin-top: 8px"><a href="#" data-open="exampleModal1">Hanglemezeink</a></li>
-                    <div class="reveal" id="exampleModal1" data-reveal>
-                        <h1>Awesome. I Have It.</h1>
-                        <p class="lead">Your couch. It is mine.</p>
-                        <p>I\'m a cool paragraph that lives inside of an even cooler modal. Wins!</p>
-                        <button class="close-button" data-close aria-label="Close modal" type="button">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                    <li style="margin-top: 8px"><a href="login_from_albums.php">Hanglemezeink</a></li>
                     <li style="margin-top: 8px"><a href="#0">Elérhetőségeink</a></li>
             <li style="margin-top: 8px">
-            <a href="login.php">Belép</a> </li> </ul></div>', $menu);
+            <a href="login.php">Bejelentkezés</a> </li> </ul></div>', $menu);
     }
     return $menu;
 }

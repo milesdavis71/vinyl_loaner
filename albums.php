@@ -20,25 +20,52 @@ echo printMenuFix();
             <div class="cell medium-2 medium-cell-block-y">
                 <br>
                 <div class="callout">
+                    <div class="polls"
                     <h6>Műfaj kiválasztása</h6>
                     <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
                     <form action="" method="GET">
-                        <input type="radio" name="genre" value="1" <?php if (isset($_GET['genre']) && $_GET['genre'] == '1')  echo ' checked="checked"';?> />rock<br>
-                        <input type="radio" name="genre" value="2" <?php if (isset($_GET['genre']) && $_GET['genre'] == '2')  echo ' checked="checked"';?> />jazz<br>
-                        <input type="radio" name="genre" value="3" <?php if (isset($_GET['genre']) && $_GET['genre'] == '3')  echo ' checked="checked"';?> />klasszikus<br>
-                        <input type="radio" name="genre" value="4" <?php if (isset($_GET['genre']) && $_GET['genre'] == '4')  echo ' checked="checked"';?> />elektronikus<br>
-                        <input type="radio" name="genre" value="0" <?php if (isset($_GET['genre']) && $_GET['genre'] == '0') echo ' checked="checked"';?> />Mind<br>
+                        <div>
+                        <input type="radio" name="genre" value="1" <?php if (isset($_GET['genre']) && $_GET['genre'] == '1')  echo ' checked="checked"';?> />
+                        <label>rock</label>
+                        </div>
+                        <div>
+                        <input type="radio" name="genre" value="2" <?php if (isset($_GET['genre']) && $_GET['genre'] == '2')  echo ' checked="checked"';?> />
+                        <label>jazz</label>
+                        </div>
+                        <div>
+                        <input type="radio" name="genre" value="3" <?php if (isset($_GET['genre']) && $_GET['genre'] == '3')  echo ' checked="checked"';?> />
+                        <label>klasszikus</label>
+                        </div>
+                        <div>
+                        <input type="radio" name="genre" value="4" <?php if (isset($_GET['genre']) && $_GET['genre'] == '4')  echo ' checked="checked"';?> />
+                        <label>elektronikus</label>
+                        </div>
+                        <div>
+                        <input type="radio" name="genre" value="0" <?php if (isset($_GET['genre']) && $_GET['genre'] == '0') echo ' checked="checked"';?> />
+                        <label>összes</label>
+                        </div>
 
                         <h6 class="small" style="margin-top: 0.7rem;">Kölcsönzés állapota</h6>
                         <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
 
-                        <input type="radio" name="avbl" value="1" <?php if (isset($_GET['avbl']) && $_GET['avbl'] == '1')  echo ' checked="checked"';?> />Kikölcsönözhető<br>
-                        <input type="radio" name="avbl" value="2" <?php if (isset($_GET['avbl']) && $_GET['avbl'] == '2')  echo ' checked="checked"';?> />Nem Kikölcsönözhető<br>
-                        <input type="radio" name="avbl" value="0" <?php if (isset($_GET['avbl']) && $_GET['avbl'] == '0')  echo ' checked="checked"';?> />Mind<br>
+                        <div>
+                        <input type="radio" name="avbl" value="1" <?php if (isset($_GET['avbl']) && $_GET['avbl'] == '1')  echo ' checked="checked"';?> />
+                        <label>kikölcsönözhető</label>
+                        </div>
+                        <div>
+                        <input type="radio" name="avbl" value="2" <?php if (isset($_GET['avbl']) && $_GET['avbl'] == '2')  echo ' checked="checked"';?> />
+                        <label>nem kikölcsönözhető</label>
+                        </div>
+                        <div>
+                        <input type="radio" name="avbl" value="0" <?php if (isset($_GET['avbl']) && $_GET['avbl'] == '0')  echo ' checked="checked"';?> />
+                        <label>összes</label>
+                        </div>
 
-                        <input type="submit" class="button" name="button" value="Szűrés"/>
+
+                        <input type="submit" class="hollow button expanded" name="button" value="Szűrés"/>
 
                     </form>
+                </div>
                 </div>
                 <div class="callout">
                     <h6>Előadó kiválasztása</h6>
@@ -69,7 +96,7 @@ echo printMenuFix();
                             }
                             ?>
                         </select>
-                        <button type="submit" class="button">Szűrés</button>
+                        <button type="submit" class="hollow button expanded">Szűrés</button>
 
 
                         <?php
