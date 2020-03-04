@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2020. Már 03. 07:25
+-- Létrehozás ideje: 2020. Már 04. 09:13
 -- Kiszolgáló verziója: 10.4.11-MariaDB
 -- PHP verzió: 7.4.1
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `vinyl_loaner_avbl`
 --
-CREATE DATABASE IF NOT EXISTS `vinyl_loaner_avbl` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
-USE `vinyl_loaner_avbl`;
 
 -- --------------------------------------------------------
 
@@ -102,8 +100,9 @@ INSERT INTO `album` (`id`, `genre_id`, `performer_id`, `title_of_record`, `relea
 (67, 1, 8, 'I.', 1978, 1, 0, 1, 'assets/img/covers/', 'van_halen_1.jpg'),
 (68, 1, 8, 'II.', 1979, 1, 0, 1, 'assets/img/covers/', 'van_halen_2.jpg'),
 (69, 1, 10, 'Creatures Of The Night', 1982, 1, 0, 1, 'assets/img/covers/', 'kiss_creatures_of_the_night.jpg'),
-(70, 1, 22, 'Permament Vacation', 1987, 1, 0, 1, 'assets/img/covers/', 'aerosmith_permament_vacation.jpg'),
-(71, 1, 42, 'Paranoid', 1970, 1, 0, 1, 'assets/img/covers/', 'black_sabbath_paranoid.jpg');
+(70, 1, 12, 'Permament Vacation', 1987, 1, 0, 1, 'assets/img/covers/', 'aerosmith_permament_vacation.jpg'),
+(71, 1, 42, 'Paranoid', 1970, 1, 0, 1, 'assets/img/covers/', 'black_sabbath_paranoid.jpg'),
+(74, 3, 40, 'Bolero', 1956, 4, 1800, 1, 'assets/img/covers/', 'charles_munch_bolero.jpg');
 
 -- --------------------------------------------------------
 
@@ -306,7 +305,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT a táblához `album`
 --
 ALTER TABLE `album`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT a táblához `available`
