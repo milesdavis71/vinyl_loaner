@@ -20,7 +20,7 @@ echo printMenuFix();
             <div class="cell medium-2 medium-cell-block-y">
                 <br>
                 <div class="callout">
-                    <div class="polls">
+                    <div class="polls"
                     <h6>Műfaj kiválasztása</h6>
                     <hr style="margin-top: 0rem; margin-bottom: 0.5rem;">
                     <form action="" method="GET">
@@ -127,7 +127,7 @@ echo printMenuFix();
 
             </div> <!-- close medium-3 medium-cell-block-y -->
 
-            <div class="cell medium-10 large-12 medium-cell-block-y">
+            <div class="cell medium-10 medium-cell-block-y">
                 <br>
                 <h5 class="text-center">Lemezeink</h5>
                 <hr>
@@ -214,6 +214,7 @@ echo printMenuFix();
             </div> <!-- close grid-x grid-padding-x -->
         </div> <!-- close cell medium-auto medium-cell-block-container -->
     </div> <!-- close grid-y medium-grid-frame -->
+
 
 <?php
 printHTML('html/footer.html');

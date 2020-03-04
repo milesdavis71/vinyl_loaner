@@ -6,7 +6,6 @@
         image.src = "assets/img/icon_small_yellow.png";
     }
 </script>
-
 <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
     <button class="menu-icon" type="button" data-toggle></button>
     <div class="title-bar-title">Menu</div>
@@ -16,14 +15,20 @@
 <!--        TODO szürke csík a mobil nézet menü tetején, kiszedni-->
         <div class="top-bar" id="example-animated-menu" data-animate="hinge-in-from-top hinge-out-from-top">
             <div class="top-bar-left">
-                <ul class="vertical dropdown menu hide-for-large" style="font-size: 1.2rem" data-magellan>
+                <ul class="dropdown menu show-for-large" data-dropdown-menu>
                     <li><a href="index.php"><img onmouseenter="highlight(this)" onmouseleave="unhighlight(this)" src="assets/img/icon_small_yellow.png"></a></li>
                     <li style="margin-top: 8px"><a href="#0">Bemutatkozás</a></li>
 
                     ::ki_belepes
                 </ul>
+                <ul class="vertical dropdown menu hide-for-large">
+                    <li><a href="index.php"><img onmouseenter="highlight(this)" onmouseleave="unhighlight(this)" src="assets/img/icon_small_yellow.png"></a></li>
+                    <li><a href="#">Bemutatkozás</a></li>
+
+                    ::ki_belepes
+                </ul>
             </div>
-        </div>
+
     </div>
 </div>
 
