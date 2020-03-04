@@ -15,12 +15,8 @@ printHTML('html/slider.html');
     <div class="grid-x grid-margin-x grid-margin-y">
 
         <?php
-        //        $sql = "select * from album inner join performer on perform.id = performerid inner join mufaj on mufid = mufajid order by album.id desc limit 12";
-
-        //$sql = "select * from album inner join performer on perform.id = performerid inner join music_genre on genr.id = genre.id";
 
         $sql = "select * from album inner join performer on perform_id = performer_id order by album.id desc limit 12";
-
 
         $result = $con -> query($sql);
 

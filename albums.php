@@ -14,7 +14,6 @@ printHTML('html/header.html');
 echo printMenuFix();
 
 ?>
-    <div class="grid-y medium-grid-frame">
     <div class="cell medium-auto medium-cell-block-container">
         <div class="grid-x grid-padding-x">
             <div class="cell medium-2 medium-cell-block-y">
@@ -180,7 +179,7 @@ echo printMenuFix();
                     // TODO kártyák abc sorrendbe, nézd meg a galáriás projektetm, ott egy result array-be van visszahívva az echo
 
                     while ($row = $result -> fetch_assoc()) {
-                        echo "<div class=\"cell small-12 large-2\">
+                        echo "<div class=\"cell small-6 large-2\">
                         <div class=\"card card-reveal-wrapper\">
                           <img src=\"{$row['path']}{$row['filename']}\">
                           <div class=\"card-section\">
