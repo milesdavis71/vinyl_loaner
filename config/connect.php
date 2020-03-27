@@ -1,6 +1,6 @@
 <?php
 
-$con = new mysqli('localhost','root','','vinyl_loaner_avbl','3306');
+$con = new mysqli('localhost','root','','vinyl_library','3306');
 //$con = new mysqli('db4free.net','milesdavis','ottosmops','vinylcenter','3306');
 //$con = new mysqli('mysql.nethely.hu','milesdavis71','OttosMops71','milesdavis71','3306');
 
