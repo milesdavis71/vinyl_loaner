@@ -16,7 +16,7 @@ echo printMenuFix();
 ?>
     <div class="cell medium-auto medium-cell-block-container">
         <div class="grid-x grid-padding-x">
-            <div class="cell medium-2 medium-cell-block-y">
+            <div class="cell medium-2 medium-cell">
                 <br>
                 <div class="callout">
                     <div class="polls"
@@ -126,7 +126,7 @@ echo printMenuFix();
 
             </div> <!-- close medium-3 medium-cell-block-y -->
 
-            <div class="cell medium-10 medium-cell-block-y">
+            <div class="cell medium-10 medium-cell">
                 <br>
                 <h5 class="text-center">Lemezeink</h5>
                 <hr>

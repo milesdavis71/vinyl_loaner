@@ -53,14 +53,12 @@ function printMenuFix() {
         $menu = str_replace('::ki_belepes',
 
             '<li style="margin-top: 8px"><a href="albums.php?genre=0&avbl=0">Hanglemezeink</a></li>
-            <li style="margin-top: 8px"><a href="#0">Elérhetőségeink</a></li>
             <li style="margin-top: 8px"><a href="logout.php">Kilép</a></ul></li>
                 </ul>', $menu);
     } else {
         $menu = str_replace('::ki_belepes',
             '
                     <li style="margin-top: 8px"><a href="login_from_albums.php">Hanglemezeink</a></li>
-                    <li style="margin-top: 8px"><a href="#0">Elérhetőségeink</a></li>
             <li style="margin-top: 8px">
             <a href="login.php">Bejelentkezés</a> </li> </ul></div>', $menu);
     }
