@@ -21,10 +21,10 @@ if (!empty($_POST['email']) && (!empty($_POST['password']))){
     //dd($stmt);
     if ($stmt -> num_rows == 1){
         //belépett
-        $stmt -> bind_result($id, $email);
+        $stmt -> bind_result($user_id, $email);
         $stmt -> fetch();
         //dd($id);
-        $_SESSION['fid'] = $id;
+        $_SESSION['fid'] = $user_id;
 
         header('Location: albums.php?genre=0&avbl=0');
     } else {
